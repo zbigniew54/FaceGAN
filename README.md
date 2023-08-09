@@ -1,9 +1,7 @@
 # Face generation with AI
-This simple app generates random images of human faces.
+This simple app generates random images of human faces. AI implementation is based on GAN (Generative Adversarial Network) trained on CelebA dataset.
 
-GAN (Generative Adversarial Network) trained on CelebA dataset
-
-Frontend is written in JavaScript. I uses Remix and React.
+Frontend is written in JavaScript. It uses Remix and React. 
 Backend is written in Python. It uses Tensorflow, Keras.
 
 # Live demo: 
