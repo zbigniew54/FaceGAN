@@ -1,7 +1,7 @@
 # Face generation with AI
 This simple app generates random images of human faces. AI implementation is based on GAN (Generative Adversarial Network) trained on CelebA dataset.
 
-Frontend is written in JavaScript. It uses Remix and React. Backend is written in Python. It uses Tensorflow, Keras. Frontend communicates with backend with fetch() and simple REST API.
+Frontend is written in JavaScript. It uses [Remix](https://remix.run/) and [React](https://react.dev/). Backend is written in Python. It uses [Tensorflow](https://www.tensorflow.org), [Keras](https://keras.io/). Frontend communicates with backend with fetch() and simple REST API.
 
 # Live demo: 
 https://facegan.fly.dev
@@ -41,4 +41,9 @@ Note that this show architecture for 112x112 resolution. Training starts from 14
 # Discriminator architecture
 ![discr_model_d4](https://github.com/zbigniew54/FaceGAN/assets/132487185/82d811d4-1d88-4f7f-8510-ebc31a733ff2)
 
+# GAN Links
+If you are interested more in learning about GANs I recommend these sites:
+* https://machinelearningmastery.com/category/generative-adversarial-networks/
+* https://jonathan-hui.medium.com/gan-gan-series-2d279f906e7b
+* https://pyimagesearch.com/category/keras-and-tensorflow/
 
