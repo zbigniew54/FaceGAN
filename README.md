@@ -12,9 +12,6 @@ You may experience slight delay when loading this app since Python server (hosti
 
 You can use sliders to edit character features. Press 'Randomize' to create new character with new set of genes (new latent vector). You can save and mix characters. Note that new (mixed) characters are not created with average of features and genes. Instead they take random value either from first or second source character.
 
-# Improvements
-GAN obiously needs more training to remove artifacts and improve image quality. Unfortunately I am currently limited to my laptop without GPU acceleration so this project progres is slow.
-
 # GAN Architecture
 GANs consists of two convolutional neural networks: generator and discriminator. Generator is the one that creates image from initial input data. That is 'latent vector' 16 random floats (in range from 0 to 1) and 'control vector' 12 floats (0:1) that define characters features. Discriminator is only used for training the generator. In vanilla GAN it only classifies images created by generator as 'fake' or 'real' but in this implementation it also classifies features of created faces. Each feature is rated separately and discriminator outputs vector of 12 values (one for each feature) that is compared with initial control vector. In this way it encourages generator to create a face with desired characteristics. This is mostly inspired by Auxiliary Classifier GAN (with multi-label classification).
 
@@ -28,6 +25,9 @@ Hyperparameters:
 * batch size: 20  (for new layers I use 32 then lower it to 20 for fine tuning)
 * training samples: 2500 images (they are changed every 10 epochs)
 * discriminator is trained 3 times per one generator update (this very important for training stability), also discriminator learning rate is x4 time larger
+
+# Improvements
+GAN obiously needs more training to remove artifacts and improve image quality. Unfortunately I am currently limited to my laptop without GPU acceleration so this project progres is slow.
 
 # My GAN training conclusions:
 * Most important thing for this model stability is 'label smoothing'. It is so simple yet very effective way for protecting GAN against mode collapse. This is simple technique: instead of comparing discriminator output with 0 (for fake images) or 1 for real ones we 'smooth' those values providing random numbers from 0.0 to 0.1 (for fake images) and 0.8 to 1.0 (for real ones). It is said that only 'real' labels should be smoothed and 'fake' should always be 0 (because smoothing it may encourage generator too keep current behaviour). However I found 'fake' labels smoothing useful in early stage of training because it prevents  discriminator loss (for fake images) from reaching 0.0. I disable 'fake' label smoothing in fine tuning. I also smooth labels for control vector (character features) in similar way.
